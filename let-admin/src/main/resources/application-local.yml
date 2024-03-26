@@ -1,0 +1,64 @@
+spring:
+    datasource:
+        data: classpath:admin.sql
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        hikari:
+            connection-timeout: 10000
+            maximum-pool-size: 10
+            minimum-idle: 15
+            pool-name: HikariConnectionPool
+      
+        password: Bagsari@123
+        url: jdbc:mysql://localhost:3306/let_admin?createDatabaseIfNotExist=true&useSSL=true
+        username: root
+    jpa:
+        generate-ddl: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL57Dialect
+                format_sql: true
+                id:
+                    new_generator_mappings: false
+    security:
+        user:
+            name: jay
+            password: jay
+        basic:
+            enabled: false    
+            
+          
+jwt:
+    secret: jwtLetYoungEmpowerSecret
+    expiry:
+        hour: 24
+       
+
+server:
+   port: 8081 
+   
+logging:
+  level:
+    s7:
+      application: WARN
+    org:
+      springframework:
+        web: ERROR
+    com:
+      snipe:
+        let: DEBUG
+  pattern: 
+    file: "%d{yyyy-MM-dd HH:mm:ss} {%thread} %-5level %logger{36} - %msg%n"
+  file: 
+    name : /root/let_admin/log/let_admin.log
+       
+let:
+   adminUrl: http://localhost:8081/v1
+   authUrl: http://localhost:8082/v1
+   retailerUrl: http://localhost:8084/v1
+   tieupsUrl: http://localhost:8085/v1
+   customerUrl: http://localhost:8086/v1
+   fareUrl: http://localhost:8090/v1
+   warehouseUrl: http://localhost:8091/v1
+   headerApiKey: LETYEMP
